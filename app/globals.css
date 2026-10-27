@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+/* Font thương hiệu: đặt file vào public/fonts/ (UTMNeoSansIntel.woff2, UTMNeoSansIntelBold.woff2...).
+   Khi chưa có file, trình duyệt dùng font cài sẵn trên máy (nếu có) hoặc font dự phòng. */
+@font-face {
+  font-family: "UTM Neo Sans Intel";
+  src: local("UTM Neo Sans Intel"), url("/fonts/UTMNeoSansIntel.woff2") format("woff2"),
+    url("/fonts/UTMNeoSansIntel.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "UTM Neo Sans Intel";
+  src: local("UTM Neo Sans Intel Bold"), local("UTMNeoSansIntelBold"), url("/fonts/UTMNeoSansIntelBold.woff2") format("woff2"),
+    url("/fonts/UTMNeoSansIntelBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Bảng màu theo Brand Guideline Vinaseed (trang 15) */
+@theme {
+  --color-brand: #005b36;
+  --color-brand-dark: #00512d;
+  --color-leaf: #789a3d;
+  --color-gold: #e8b909;
+  --color-earth: #351800;
+  --color-earth-2: #4c2a03;
+  --color-mist: #f1f2f2;
+  --color-line: #d1d3d4;
+  --color-stone: #808285;
+  --font-sans: "UTM Neo Sans Intel", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  @apply bg-mist text-earth antialiased;
+}
+
+/* Nội dung Markdown (thuyết minh quy trình, nhật ký) */
+.prose-vs {
+  @apply text-[15px] leading-relaxed text-earth;
+}
+.prose-vs p {
+  @apply my-2;
+}
+.prose-vs ul {
+  @apply my-2 list-disc pl-5;
+}
+.prose-vs ol {
+  @apply my-2 list-decimal pl-5;
+}
+.prose-vs li {
+  @apply my-1;
+}
+.prose-vs strong {
+  @apply font-bold text-brand-dark;
+}
+.prose-vs a {
+  @apply text-brand underline;
+}
+.prose-vs table {
+  @apply my-3 w-full border-collapse text-sm;
+}
+.prose-vs th,
+.prose-vs td {
+  @apply border border-line px-2 py-1 text-left;
+}
+.prose-vs th {
+  @apply bg-mist;
+}
+
+/* Họa tiết vòng cung lá (hình đồ họa bổ trợ, trang 17) */
+.brand-arcs {
+  background-image: url("/brand/arcs.svg");
+  background-repeat: no-repeat;
+  background-position: right -40px bottom -60px;
+  background-size: 260px;
+}
+
+/* Thành phần giao diện trang quản trị */
+.inp {
+  @apply w-full rounded-lg border border-line bg-white px-3 py-2 text-[15px] text-earth placeholder:text-stone/70 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 disabled:bg-mist disabled:text-stone;
+}
+.lbl {
+  @apply mb-1 block text-sm font-bold text-earth;
+}
+.hint {
+  @apply mt-1 text-xs text-stone;
+}
+.btn {
+  @apply inline-flex items-center justify-center gap-1.5 rounded-lg border border-line bg-white px-3 py-2 text-sm font-bold text-earth hover:border-brand hover:text-brand disabled:opacity-50;
+}
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-1.5 rounded-lg bg-brand px-4 py-2 text-sm font-bold text-white hover:bg-brand-dark disabled:opacity-60;
+}
+.btn-danger {
+  @apply inline-flex items-center justify-center gap-1.5 rounded-lg border border-red-200 bg-white px-3 py-2 text-sm font-bold text-red-700 hover:bg-red-50;
+}
+.card {
+  @apply rounded-xl border border-line bg-white p-4;
+}
+.tbl {
+  @apply w-full text-sm;
+}
+.tbl th {
+  @apply border-b border-line px-3 py-2 text-left text-xs font-bold uppercase tracking-wide text-stone;
+}
+.tbl td {
+  @apply border-b border-line px-3 py-2 align-top;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+}
