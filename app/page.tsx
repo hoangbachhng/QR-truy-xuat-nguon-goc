@@ -22,7 +22,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ n
   const t = dict(lang);
   const models = await listModels({ publishedOnly: true });
   return (
-    <div className="min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <PublicHeader lang={lang} path="/" />
       <section className="brand-arcs bg-brand text-white">
         <div className="mx-auto max-w-5xl px-4 py-10">
@@ -32,7 +32,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ n
             <input
               name="code"
               placeholder={t.searchPlaceholder}
-              className="min-w-0 flex-1 rounded-lg border-0 px-3 py-2.5 text-earth placeholder:text-stone"
+              className="min-w-0 flex-1 rounded-lg border-0 bg-white px-3 py-2.5 text-earth placeholder:text-stone focus:outline-none focus:ring-2 focus:ring-gold"
               aria-label={t.searchPlaceholder}
             />
             <button className="inline-flex items-center gap-1 rounded-lg bg-gold px-4 font-bold text-earth">
@@ -46,7 +46,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ n
           )}
         </div>
       </section>
-      <main className="mx-auto max-w-5xl px-4 py-6">
+      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6">
         <ul className="grid gap-3 sm:grid-cols-2">
           {models.map((m) => (
             <li key={m.id}>

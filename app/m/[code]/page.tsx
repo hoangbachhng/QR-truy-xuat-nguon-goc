@@ -70,7 +70,7 @@ export default async function ModelPage({ params, searchParams }: Props) {
   const path = `/m/${model.code}${tab !== "tong-quan" ? `?tab=${tab}` : ""}`;
 
   return (
-    <div className="min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <PublicHeader lang={lang} path={path} />
       <Hero model={model} variety={variety} t={t} lang={lang} progress={progress} />
 
@@ -95,7 +95,7 @@ export default async function ModelPage({ params, searchParams }: Props) {
         </div>
       </nav>
 
-      <main className="mx-auto max-w-5xl px-4 py-5">
+      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-5">
         {tab === "tong-quan" && <Overview model={model} variety={variety} t={t} lang={lang} />}
         {tab === "quy-trinh" && <ProcessTab model={model} process={process} steps={steps} diary={diary} t={t} lang={lang} progress={progress} />}
         {tab === "lo-giong" && <LotTab model={model} t={t} />}
