@@ -32,7 +32,7 @@ export function PublicHeader({ lang, path }: { lang: Lang; path: string }) {
   );
 }
 
-export function PublicFooter({ text }: { text: string }) {
+export function PublicFooter({ text, loginLabel }: { text: string; loginLabel?: string }) {
   return (
     <footer className="mt-10 bg-earth text-white/80">
       <div className="mx-auto max-w-5xl px-4 py-6 text-xs leading-relaxed">
@@ -44,6 +44,13 @@ export function PublicFooter({ text }: { text: string }) {
             www.vinaseed.com.vn
           </a>
         </p>
+        {loginLabel && (
+          <p className="mt-3 border-t border-white/15 pt-3">
+            <Link href="/admin" className="text-white/70 underline hover:text-white">
+              {loginLabel}
+            </Link>
+          </p>
+        )}
       </div>
     </footer>
   );
