@@ -37,13 +37,14 @@ export default async function SignPage({ params, searchParams }: { params: Promi
         className="sign relative mx-auto flex aspect-[297/210] w-full max-w-[1123px] flex-col overflow-hidden rounded-xl text-white shadow-xl"
         style={{ background: bg, printColorAdjust: "exact", WebkitPrintColorAdjust: "exact" }}
       >
-        <svg viewBox="0 0 200 200" className="absolute -bottom-[18%] -right-[8%] h-[85%] opacity-90" aria-hidden="true">
-          <g fill="none" stroke="#789a3d" strokeWidth="22" opacity=".55">
-            <path d="M10 210A120 120 0 0 1 130 90" />
-            <path d="M90 210A120 120 0 0 1 210 90" />
-            <path d="M10 110A120 120 0 0 1 130 -10" />
-          </g>
-        </svg>
+        {/* Hình đồ họa bổ trợ gốc (trang 18), đặt theo mẫu trang 43: cao ~66% biển, sát góc phải, đáy cắt ~16% */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={theme === "brown" ? "/brand/brand-graphic-earth.svg" : "/brand/brand-graphic-leaf.svg"}
+          alt=""
+          aria-hidden="true"
+          className="absolute -bottom-[10.5%] right-0 aspect-square h-[66%] w-auto"
+        />
         <div className="relative flex flex-1 flex-col p-[5%]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/brand/logo-white.svg" alt="Vinaseed" className="h-[7%] w-auto self-start" />

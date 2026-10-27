@@ -73,12 +73,22 @@ body {
   @apply bg-mist;
 }
 
-/* Họa tiết vòng cung lá (hình đồ họa bổ trợ, trang 17) */
-.brand-arcs {
-  background-image: url("/brand/arcs.svg");
-  background-repeat: no-repeat;
-  background-position: right -40px bottom -60px;
-  background-size: 260px;
+/* Hình đồ họa bổ trợ (Brand Guideline trang 17–18), đặt như mẫu biển cắm ruộng trang 43:
+   sát góc dưới phải, đáy bị cắt ~16%. Trên nền xanh đậm dùng màu xanh lá #789a3d.
+   Đổi kích thước bằng biến --g, ví dụ class [--g:360px]. */
+@layer components {
+  .brand-graphic {
+    --g: 150px;
+    background-image: url("/brand/brand-graphic-leaf.svg");
+    background-repeat: no-repeat;
+    background-size: var(--g) var(--g);
+    background-position: right 0 bottom calc(var(--g) * -0.16);
+  }
+  @media (min-width: 640px) {
+    .brand-graphic {
+      --g: 200px;
+    }
+  }
 }
 
 /* Thành phần giao diện trang quản trị */

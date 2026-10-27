@@ -23,7 +23,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
   if (await currentUser()) redirect("/admin");
   const { err } = await searchParams;
   return (
-    <div className="brand-arcs flex min-h-screen items-center justify-center bg-brand p-4">
+    <div className="brand-graphic flex min-h-screen [--g:280px] sm:[--g:420px] items-center justify-center bg-brand p-4">
       <form action={login} className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl">
         <Logo className="mx-auto mb-2 h-7" />
         <p className="mb-6 text-center text-sm text-stone">Quản trị mô hình trình diễn</p>

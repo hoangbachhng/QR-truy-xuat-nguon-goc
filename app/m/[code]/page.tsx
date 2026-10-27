@@ -110,7 +110,7 @@ function Hero({ model, variety, t, lang, progress }: { model: Model; variety?: V
   const place = [model.commune, model.district, model.province].filter(Boolean).join(", ");
   const stage = progress?.currentStep ? pick(lang, progress.currentStep.stage, null) : "";
   return (
-    <section className="brand-arcs bg-brand text-white">
+    <section className="brand-graphic bg-brand text-white">
       <div className="mx-auto max-w-5xl px-4 pb-14 pt-5">
         <p className="text-sm text-gold">
           {t.demoModel} · {model.code}
