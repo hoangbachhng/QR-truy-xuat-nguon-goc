@@ -123,10 +123,15 @@ async function migrate(db: Db) {
 
 const g = globalThis as unknown as { __vsDb?: Promise<Db> };
 
+// Vercel/Netlify không cho ghi file lâu dài, nên PGlite (lưu ở ./data) không chạy được ở đó.
+export const isServerless = () => !!(process.env.NETLIFY || process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+
 export function getDb(): Promise<Db> {
   if (!g.__vsDb) {
     g.__vsDb = (async () => {
       const url = process.env.DATABASE_URL;
+      if (!url && isServerless())
+        throw new Error("Chưa khai báo DATABASE_URL: trên Vercel/Netlify phải dùng PostgreSQL bên ngoài (ví dụ Neon). Xem /api/health và README.");
       const db = url ? await createPg(url) : await createPglite();
       await migrate(db);
       return db;
